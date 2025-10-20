@@ -9,12 +9,7 @@ public abstract class DeviceDecorator implements Device {
         this.decoratedDevice = decoratedDevice;
     }
     @Override
-    public void on() {
-        decoratedDevice.on();
-    }
-
-    @Override
-    public void off() {
-        decoratedDevice.off();
+    public void operate(String operation){
+        decoratedDevice.operate(operation);
     }
 }

@@ -10,15 +10,13 @@ public class VoiceControlDecorator extends DeviceDecorator {
     }
 
     @Override
-    public void on() {
-        super.on();
-        addVoiceControl();
-    }
-
-    @Override
-    public void off() {
-        super.off();
-        removeVoiceControl();
+    public void operate(String operation) {
+        decoratedDevice.operate(operation);
+        if ("on".equalsIgnoreCase(operation)) {
+            addVoiceControl();
+        } else if ("off".equalsIgnoreCase(operation)) {
+            removeVoiceControl();
+        }
     }
 
     private void addVoiceControl() {

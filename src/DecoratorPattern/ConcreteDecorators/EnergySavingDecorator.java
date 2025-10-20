@@ -10,15 +10,13 @@ public class EnergySavingDecorator extends DeviceDecorator {
     }
 
     @Override
-    public void on() {
-        super.on();
-        addEnergySaving();
-    }
-
-    @Override
-    public void off() {
-        super.off();
-        removeEnergySaving();
+    public void operate(String operation) {
+        decoratedDevice.operate(operation);
+        if ("on".equalsIgnoreCase(operation)) {
+            addEnergySaving();
+        } else if ("off".equalsIgnoreCase(operation)) {
+            removeEnergySaving();
+        }
     }
 
     private void addEnergySaving() {

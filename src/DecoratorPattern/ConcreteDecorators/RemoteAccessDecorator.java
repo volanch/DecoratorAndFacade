@@ -10,15 +10,13 @@ public class RemoteAccessDecorator extends DeviceDecorator {
     }
 
     @Override
-    public void on() {
-        super.on();
-        addRemoteAccess();
-    }
-
-    @Override
-    public void off() {
-        super.off();
-        removeRemoteAccess();
+    public void operate(String operation) {
+        decoratedDevice.operate(operation);
+        if ("on".equalsIgnoreCase(operation)) {
+            addRemoteAccess();
+        } else if ("off".equalsIgnoreCase(operation)) {
+            removeRemoteAccess();
+        }
     }
 
     private void addRemoteAccess(){
